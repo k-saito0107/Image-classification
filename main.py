@@ -4,9 +4,11 @@ import torchvision.transforms as transforms
 import torch.utils.data as data
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 from PIL import Image
 
-
+path = os.getcwd()
+print(path)
 #データセットの作成
 from data_transform import Resize
 from torchvision.datasets import ImageFolder
