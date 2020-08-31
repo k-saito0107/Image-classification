@@ -52,7 +52,7 @@ def train(model, num_epochs,train_loader, test_loader):
             log_epoch = {'epoch' : epoch, 'train_loss' : t_loss, 'val_loss' : val_loss,'val_acc' : val_acc}
             logs.append(log_epoch)
             df = pd.DataFrame(logs)
-            df.to_csv('/Img-classification/../Img_classification/log_out.csv')
+            df.to_csv('/Img-classification/Img_classification/log_out.csv')
         
         if epoch % 100 == 0 and epoch != 10:
             print('---------------------------------------------------------------')
