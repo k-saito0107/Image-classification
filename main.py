@@ -26,12 +26,12 @@ transform = transforms.Compose([
 
 
 train_images=ImageFolder(
-    '../Img_classification/data/Images/',
+    '/../Img_classification/data/Images/',
     transform=transform
 )
 
 test_images=ImageFolder(
-    '../Img_classification/data/Annotations/',
+    '/../Img_classification/data/Annotations/',
     transform=transform
 )
 
@@ -54,7 +54,7 @@ num_epoch = 1000
 
 up_model = train(model, num_epoch, train_loader, test_loader)
 
-torch.save(up_model.state_dict(),'../Img_classification/weights/resnet'+str(num_epoch)+'.pth')
+torch.save(up_model.state_dict(),'/../Img_classification/weights/resnet'+str(num_epoch)+'.pth')
 
 print('finish')
 
