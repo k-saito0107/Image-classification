@@ -52,7 +52,7 @@ num_epoch = 1000
 
 up_model = train(model, num_epoch, train_loader, test_loader)
 
-torch.save(model.state_dict(),'kw_resources/画像分類/weights/resnet'+str(num_epoch)+'.pth')
+torch.save(up_model.state_dict(),'kw_resources/画像分類/weights/resnet'+str(num_epoch)+'.pth')
 
 print('finish')
 
