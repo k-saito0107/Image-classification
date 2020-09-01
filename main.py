@@ -2,7 +2,6 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 import torch.utils.data as data
-import matplotlib.pyplot as plt
 import numpy as np
 import os
 from PIL import Image
