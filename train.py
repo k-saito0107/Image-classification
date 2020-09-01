@@ -36,7 +36,7 @@ def train(model, num_epochs,train_loader, test_loader):
             total = 0 #予測したデータの総数
             running_loss = 0.0
             for v_img, v_label in test_loader:
-                model.val()
+                model.eval()
                 v_img , v_label = v_img.to(device), v_label.to(device)
                 v_outputs = model(v_img)
                 v_loss=criterion(v_outputs,v_label)
