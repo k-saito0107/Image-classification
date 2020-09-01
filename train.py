@@ -35,8 +35,8 @@ def train(model, num_epochs,train_loader, test_loader):
             correct = 0 #正解したデータの総数
             total = 0 #予測したデータの総数
             running_loss = 0.0
+            model.eval()
             for v_img, v_label in test_loader:
-                model.eval()
                 v_img , v_label = v_img.to(device), v_label.to(device)
                 v_outputs = model(v_img)
                 v_loss=criterion(v_outputs,v_label)
@@ -57,6 +57,7 @@ def train(model, num_epochs,train_loader, test_loader):
         
         if epoch % 100 == 0 and epoch != 10:
             print('---------------------------------------------------------------')
+            torch.save(model.state_dict(),'/kw_resources/Img_classification/weights/resnet'+str(epoch)+'.pth')
         
     
     return model

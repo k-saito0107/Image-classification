@@ -53,7 +53,7 @@ num_epoch = 1000
 
 up_model = train(model, num_epoch, train_loader, test_loader)
 
-torch.save(up_model.state_dict(),'/kw_resources/Img_classification/weights/resnet'+str(num_epoch)+'.pth')
+
 
 print('finish')
 
