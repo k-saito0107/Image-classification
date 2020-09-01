@@ -12,7 +12,7 @@ def train(model, num_epochs,train_loader, test_loader):
         device = 'cuda'
     else:
         device = 'cpu'
-    
+    print(device)
     model.to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
