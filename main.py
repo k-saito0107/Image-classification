@@ -34,8 +34,8 @@ test_images=ImageFolder(
     transform=transform
 )
 
-train_loader=torch.utils.data.DataLoader(train_images,batch_size=32,shuffle=True)
-test_loader=torch.utils.data.DataLoader(test_images,batch_size=32,shuffle=True)
+train_loader=torch.utils.data.DataLoader(train_images,batch_size=16,shuffle=True)
+test_loader=torch.utils.data.DataLoader(test_images,batch_size=16,shuffle=True)
 
 
 from model import ResNet
