@@ -14,7 +14,7 @@ from torchvision.datasets import ImageFolder
 from data_augumentation import Compose, Resize, Scale, RandomRotation, RandomMirror
 
 width = 512
-height = 384
+height = 512
 mean = (0.5, 0.5, 0.5)
 std = (0.5, 0.5, 0.5)
 

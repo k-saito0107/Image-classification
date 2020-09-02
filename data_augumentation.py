@@ -23,15 +23,7 @@ class Resize():
         self.height = height
     
     def __call__(self, img):
-        w, h = img.size
-        if w-h > 100:
-            re_img = img.resize((self.width, self.height))
-        
-        elif h-w > 100:
-            re_img = img.resize((self.height, self.width))
-
-        else:
-            re_img = img.resize((int((self.height+self.width)/2),int((self.height+self.width)/2)))
+        re_img = img.resize((self.width, self.height))
 
         return re_img
 
