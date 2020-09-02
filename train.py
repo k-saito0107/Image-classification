@@ -47,10 +47,11 @@ def train(model, num_epochs,train_loader, test_loader):
                 correct += (predicted == v_label).sum().item()
             val_acc=correct/total
             val_loss = running_loss/len(test_loader)
-            print('train_loss : {},  val_loss : {},  val_acc : {}'.format(t_loss, val_loss, val_acc))
+            train_loss = t_loss
+            print('train_loss : {},  val_loss : {},  val_acc : {}'.format(train_loss, val_loss, val_acc))
 
             #ログを保存
-            log_epoch = {'epoch' : epoch, 'train_loss' : t_loss, 'val_loss' : val_loss,'val_acc' : val_acc}
+            log_epoch = {'epoch' : epoch, 'train_loss' : train_loss, 'val_loss' : val_loss,'val_acc' : val_acc}
             logs.append(log_epoch)
             df = pd.DataFrame(logs)
             df.to_csv('/kw_resources/Img_classification/log_out.csv')
