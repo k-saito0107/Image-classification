@@ -45,13 +45,13 @@ test_images=ImageFolder(
     transform=val_transform
 )
 
-train_loader=torch.utils.data.DataLoader(train_images,batch_size=16,shuffle=True)
-test_loader=torch.utils.data.DataLoader(test_images,batch_size=16,shuffle=True)
+train_loader=torch.utils.data.DataLoader(train_images,batch_size=12,shuffle=True)
+test_loader=torch.utils.data.DataLoader(test_images,batch_size=12,shuffle=True)
 
 
 from model import ResNet
 in_ch = 3
-f_out = 64
+f_out = 32
 n_ch = 37
 
 model = ResNet(in_ch, f_out, n_ch)
@@ -60,7 +60,7 @@ model = ResNet(in_ch, f_out, n_ch)
 
 #モデルの学習
 from train import train
-num_epoch = 1000
+num_epoch = 500
 
 up_model = train(model, num_epoch, train_loader, test_loader)
 

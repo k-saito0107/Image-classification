@@ -80,7 +80,7 @@ class ResNet(nn.Module):
         x = self.layer5(x)
         x = self.layer6(x)
         x = self.layer7(x)
-        x=x.view(-1, 2048)
+        x=x.view(-1, 1024)
         x = self.layer8(x)
 
         return x
