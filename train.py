@@ -15,7 +15,7 @@ def train(model, num_epochs,train_loader, test_loader):
     print(device)
     model.to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.0001)
     logs = []
 
     for epoch in range(1, num_epochs+1):
@@ -47,7 +47,7 @@ def train(model, num_epochs,train_loader, test_loader):
                 correct += (predicted == v_label).sum().item()
             val_acc=correct/total
             val_loss = running_loss/len(test_loader)
-            train_loss = t_loss
+            train_loss = t_loss.to('cpu')
             print('train_loss : {},  val_loss : {},  val_acc : {}'.format(train_loss, val_loss, val_acc))
 
             #ログを保存
