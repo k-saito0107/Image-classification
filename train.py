@@ -15,11 +15,12 @@ def train(model, num_epochs,train_loader, test_loader):
     print(device)
     model.to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.0001)
+    optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
     logs = []
 
     for epoch in range(1, num_epochs+1):
-        for img, label in train_loader:
+        for i, data in enumerate(train_loader, 0):
+            img, label = data
             model.train()
             img , label = img.to(device), label.to(device)
             optimizer.zero_grad()
@@ -36,7 +37,8 @@ def train(model, num_epochs,train_loader, test_loader):
             total = 0 #予測したデータの総数
             running_loss = 0.0
             model.eval()
-            for v_img, v_label in test_loader:
+            for i, v_data in enumerate(test_loader, 0):
+                v_img, v_label = v_data
                 v_img , v_label = v_img.to(device), v_label.to(device)
                 v_outputs = model(v_img)
                 v_loss=criterion(v_outputs,v_label)
@@ -44,7 +46,8 @@ def train(model, num_epochs,train_loader, test_loader):
                 _, predicted = torch.max(v_outputs.data, 1)
                 total += v_label.size(0)
                 # 予測したデータ数を加算
-                correct += (predicted == v_label).sum().item()
+                #correct += (predicted == v_label).sum().item()
+                correct += torch.sum(predicted==v_label.data)
             val_acc=correct/total
             val_loss = running_loss/len(test_loader)
             train_loss = t_loss.to('cpu')

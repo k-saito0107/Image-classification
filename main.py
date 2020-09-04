@@ -20,7 +20,6 @@ std = (0.5, 0.5, 0.5)
 
 
 train_transform = transforms.Compose([
-    Scale(scale=[0.5,1.5]),
     RandomRotation(angle=[-10,10]),
     RandomMirror(),
     Resize(width, height),
@@ -45,8 +44,8 @@ test_images=ImageFolder(
     transform=val_transform
 )
 
-train_loader=torch.utils.data.DataLoader(train_images,batch_size=12,shuffle=True)
-test_loader=torch.utils.data.DataLoader(test_images,batch_size=12,shuffle=True)
+train_loader=torch.utils.data.DataLoader(train_images,batch_size=12,shuffle=True, num_workers=2)
+test_loader=torch.utils.data.DataLoader(test_images,batch_size=12,shuffle=True, num_workers=2)
 
 
 from model import ResNet
