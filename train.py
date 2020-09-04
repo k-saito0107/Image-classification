@@ -48,7 +48,7 @@ def train(model, num_epochs,train_loader, test_loader):
                 # 予測したデータ数を加算
                 #correct += (predicted == v_label).sum().item()
                 correct += torch.sum(predicted==v_label.data)
-            val_acc=correct/total
+            val_acc=correct/len(test_loader)
             val_loss = running_loss/len(test_loader)
             train_loss = t_loss.to('cpu')
             print('train_loss : {},  val_loss : {},  val_acc : {}'.format(train_loss, val_loss, val_acc))
